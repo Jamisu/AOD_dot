@@ -1,8 +1,5 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
 import 'react-native-reanimated';
 
@@ -10,7 +7,6 @@ import { StyleSheet, View, TouchableWithoutFeedback } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useKeepAwake } from "expo-keep-awake";
 import Animated, {
-  Easing,
   useSharedValue,
   useAnimatedStyle,
   withRepeat,
@@ -51,9 +47,9 @@ export default function RootLayout() {
       opacity.value = withRepeat(
         withSequence(
           withTiming(1, { duration: 0 }), // Instantly turn on
-          withTiming(1, { duration: 300 }), // Keep fully on for 300ms
+          withTiming(1, { duration: 200 }), // Keep fully on for 300ms
           withTiming(0, { duration: 0 }), // Instantly turn off
-          withTiming(0, { duration: 700 }) // Stay off for 700ms
+          withTiming(0, { duration: 800 }) // Stay off for 700ms
         ),
         -1,
         false
