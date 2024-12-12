@@ -31,15 +31,14 @@ export default function Index() {
           withTiming(0, { duration: 0 }), // Instantly turn off
           withTiming(0, { duration: 700 }) // Stay off for 700ms
         ),
-        -1, // Infinite repetitions
-        false // No reverse animation
+        -1,
+        false
       );
     } else {
       opacity.value = withTiming(1, { duration: 0 }); // Instantly fully visible
     }
   }, [isFlashing, opacity]);
 
-  // Animated style for the LED
   const animatedStyle = useAnimatedStyle(() => ({
     opacity: opacity.value,
   }));
@@ -47,7 +46,6 @@ export default function Index() {
   return (
     <TouchableWithoutFeedback onPress={() => setIsFlashing(!isFlashing)}>
       <View style={styles.container}>
-        {/* Simulated LED */}
         <Animated.View style={[styles.led, animatedStyle]} />
       </View>
     </TouchableWithoutFeedback>
@@ -57,14 +55,14 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black", // AMOLED-friendly background
+    backgroundColor: "black"
   },
   led: {
-    width: 10, // Diameter of the LED
+    width: 10,
     height: 10,
     top: 25,
     left: 25,
-    borderRadius: 25, // Circular shape
-    backgroundColor: "blue", // LED color
+    borderRadius: 25,
+    backgroundColor: "blue"
   },
 });
